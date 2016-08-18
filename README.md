@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/meanie-express-raven-service.svg)](https://www.npmjs.com/package/meanie-express-raven-service)
 [![node dependencies](https://david-dm.org/meanie/express-raven-service.svg)](https://david-dm.org/meanie/express-raven-service)
 [![github issues](https://img.shields.io/github/issues/meanie/express-raven-service.svg)](https://github.com/meanie/express-raven-service/issues)
-[![codacy](https://img.shields.io/codacy/7f7f64c4d2da412ab8b1bfe6ec2103ca.svg)](https://www.codacy.com/app/meanie/express-raven-service)
+[![codacy](https://img.shields.io/codacy/7114ba84378147fc93791e680f44a308.svg)](https://www.codacy.com/app/meanie/express-raven-service)
 [![Join the chat at https://gitter.im/meanie/meanie](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg)](https://gitter.im/meanie/meanie?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A service to configure and expose a Raven (Sentry) client for error logging, for use in Meanie Express Seed projects
