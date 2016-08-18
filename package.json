@@ -1,0 +1,42 @@
+{
+  "name": "meanie-express-raven-service",
+  "description": "A service to configure and expose a Raven (Sentry) client for error logging, for use in Meanie Express Seed projects",
+  "version": "1.0.0",
+  "homepage": "https://github.com/meanie/express-raven-service",
+  "author": {
+    "name": "Adam Buczynski",
+    "email": "me@adambuczynski.com",
+    "url": "http://adambuczynski.com/"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meanie/express-raven-service"
+  },
+  "bugs": {
+    "url": "https://github.com/meanie/express-raven-service/issues"
+  },
+  "keywords": [
+    "meanie",
+    "express",
+    "raven",
+    "sentry",
+    "service"
+  ],
+  "engines": {
+    "node": ">=6.3.0",
+    "npm": ">=3.10.3"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "dependencies": {
+    "raven": "^0.12.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1"
+  }
+}
