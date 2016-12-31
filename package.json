@@ -34,7 +34,7 @@
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
-    "raven": "^0.12.1"
+    "raven": "^1.1.1"
   },
   "devDependencies": {
     "eslint": "^2.13.1"

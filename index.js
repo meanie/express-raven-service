@@ -3,7 +3,7 @@
 /**
  * Dependencies
  */
-const raven = require('raven');
+const Raven = require('raven');
 
 //Initialize client
 let client = null;
@@ -30,17 +30,17 @@ module.exports = function(DSN, config, cb) {
       config.environment = process.env.NODE_ENV;
     }
 
-    //Use default patch callback if none provided
+    //Use default install callback if none provided
     cb = cb || function() {
       console.log('Exiting due to uncaught exception');
       process.exit(1);
     };
 
-    //Create new client
-    client = new raven.Client(DSN, config);
+    //Configure
+    Raven.config(DSN, config).install(cb);
 
-    //Patch global
-    client.patchGlobal(cb);
+    //Set client
+    client = Raven;
   }
 
   //Return client
