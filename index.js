@@ -25,9 +25,9 @@ module.exports = function(DSN, config, cb) {
     //Extract config params
     config = config || {};
 
-    //Use node environment if not specified
+    //Use app or node environment if not specified
     if (!config.environment) {
-      config.environment = process.env.NODE_ENV;
+      config.environment = process.env.APP_ENV || process.env.NODE_ENV;
     }
 
     //Use default install callback if none provided
