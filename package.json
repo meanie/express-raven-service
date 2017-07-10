@@ -30,13 +30,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
     "postversion": "git push && git push --tags && npm publish"
   },
-  "dependencies": {
-    "raven": "^1.1.1"
-  },
-  "devDependencies": {
-    "eslint": "^2.13.1"
+  "peerDependencies": {
+    "raven": "^2.1.0"
   }
 }
