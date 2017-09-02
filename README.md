@@ -1,40 +1,49 @@
 # meanie-express-raven-service
 
-[![npm version](https://img.shields.io/npm/v/meanie-express-raven-service.svg)](https://www.npmjs.com/package/meanie-express-raven-service)
-[![node dependencies](https://david-dm.org/meanie/express-raven-service.svg)](https://david-dm.org/meanie/express-raven-service)
-[![github issues](https://img.shields.io/github/issues/meanie/express-raven-service.svg)](https://github.com/meanie/express-raven-service/issues)
-[![codacy](https://img.shields.io/codacy/7114ba84378147fc93791e680f44a308.svg)](https://www.codacy.com/app/meanie/express-raven-service)
-[![Join the chat at https://gitter.im/meanie/meanie](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg)](https://gitter.im/meanie/meanie?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+## Deprecated
 
-A service to configure and expose a Raven (Sentry) client for error logging, for use in Meanie Express Seed projects
+This package has been deprecated in favour of using a simple initialisation script for error handling and using Raven directly:
 
-![Meanie](https://raw.githubusercontent.com/meanie/meanie/master/meanie-logo-full.png)
+```js
+'use strict';
 
-## Installation
+/**
+ * Dependencies
+ */
+const raven = require('raven');
+const {SENTRY_DSN, SENTRY_CONFIG} = require('./config');
 
-You can install this package using `npm`.
+//Use sentry
+if (SENTRY_DSN) {
 
-```shell
-npm install meanie-express-raven-service --save
+  //Get config
+  const config = Object.assign({
+    environment: process.env.APP_ENV || process.env.NODE_ENV,
+  }, SENTRY_CONFIG);
+
+  //Create callback
+  const cb = function() {
+    console.log('Exiting due to uncaught exception');
+    process.exit(1);
+  };
+
+  //Configure
+  raven
+    .config(SENTRY_DSN, config)
+    .install(cb);
+}
 ```
 
-## Usage
+Then later just use Raven directly:
 
-See the [Meanie Express Seed](https://github.com/meanie/express-seed) for usage.
+```js
+const raven = require('raven');
+raven.captureException(error, data);
+```
 
-## Issues & feature requests
-
-Please report any bugs, issues, suggestions and feature requests in the [meanie-express-raven-service issue tracker](https://github.com/meanie/express-raven-service/issues).
-
-## Contributing
-
-Pull requests are welcome! If you would like to contribute to Meanie, please check out the [Meanie contributing guidelines](https://github.com/meanie/meanie/blob/master/CONTRIBUTING.md).
-
-## Credits
-
-* Meanie logo designed by [Quan-Lin Sim](mailto:quan.lin.sim+meanie@gmail.com)
+Or make use of the `trackWithSentry` middleware from [@meanie/express-error-handling](https://www.npmjs.com/package/@meanie/express-error-handling).
 
 ## License
 (MIT License)
 
-Copyright 2016-2017, [Adam Reis](http://adam.reis.nz)
+Copyright 2016-2017, [Adam Reis](https://adam.reis.nz)
